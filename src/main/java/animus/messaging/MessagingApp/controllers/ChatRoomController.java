@@ -13,8 +13,8 @@ import java.util.Optional;
 
 public class ChatRoomController {
 
-    private ChatRoomService chatRoomService;
-    @GetMapping
+    private final ChatRoomService chatRoomService;
+    @GetMapping("/getRoom")
     Optional<String> getRoom(@RequestBody String senderId, @RequestBody String recipientId){
         return chatRoomService.getChatRoom(senderId, recipientId,true);
     }

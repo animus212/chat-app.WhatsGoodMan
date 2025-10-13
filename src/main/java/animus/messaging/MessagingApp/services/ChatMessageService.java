@@ -13,8 +13,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ChatMessageService {
 
-    ChatRoomService chatRoomService;
-    ChatMessageRepository chatMessageRepository;
+   final ChatRoomService chatRoomService;
+   final ChatMessageRepository chatMessageRepository;
 
     public ChatMessage saveMessage(ChatMessage chatMessage){
 

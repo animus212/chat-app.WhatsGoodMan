@@ -25,7 +25,7 @@ public class ChatRoomService {
 
     private String saveNewChatRoom(String senderId, String recipientId) {
 
-        String chatId = String.format("%_%", senderId,recipientId);
+        String chatId = String.format("%s_%s", senderId,recipientId);
         ChatRoom newRoomSender = ChatRoom.builder().
                 senderId(senderId).
                 recipientId(recipientId).chatId(chatId).build();

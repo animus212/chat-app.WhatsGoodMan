@@ -19,8 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChatController {
 
-    private ChatMessageService chatMessageService;
-    private SimpMessagingTemplate messagingTemplate;
+    private final ChatMessageService chatMessageService;
+    private final SimpMessagingTemplate messagingTemplate;
     public final ObjectMapper mapper;
 
     @MessageMapping("/chat")
@@ -29,6 +29,7 @@ public class ChatController {
         chatMessageService.saveMessage(chatMessage);
 
         messagingTemplate.convertAndSendToUser(messageDTO.getRecipient(), "/queue/messages", messageDTO);
+        System.out.println("Sending to user: " + messageDTO.getRecipient());
     }
 
     @GetMapping("/messages/{senderId}/{recipientId}")

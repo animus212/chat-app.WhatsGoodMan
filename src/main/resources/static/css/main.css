@@ -1,0 +1,360 @@
+/* -----------------------
+   base (desktop) styles
+   ----------------------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h2 {
+    margin: 12px 0 0 0;
+    font-weight: 700;
+}
+
+/* Chat container (desktop fixed size preserved) */
+.chat-container {
+    display: flex;
+    max-width: 800px;
+    min-width: 800px;
+    min-height: 600px;
+    max-height: 600px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Users list (left column) */
+.users-list {
+    flex: 1;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #3498db;
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.users-list-container {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.users-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.users-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.user-item.active {
+    background-color: #cdebff;
+    color: #4f4f4f;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-item span {
+    font-weight: bold;
+}
+
+.separator {
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+/* Chat area (right column) */
+.chat-area {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.message {
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#chat-messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: calc(600px - 130px); /* approximate room for header + input on desktop */
+}
+
+.message p {
+    padding: 0 12px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    max-width: 70%;
+}
+
+.user-item span.nbr-msg {
+    margin-left: 10px;
+    background-color: #f8fa6f;
+    color: white;
+    padding: 5px;
+    width: 22px;
+    border-radius: 50%;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.sender {
+    background-color: #3498db;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.receiver {
+    background-color: #ecf0f1;
+    color: #333;
+    align-self: flex-start;
+}
+
+.message-input {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.message-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.message-input button {
+    padding: 10px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Login form */
+.user-form {
+    max-width: 400px;
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.user-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.user-form input {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.user-form button {
+    padding: 12px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+a.logout {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* small back button (hidden by default) */
+.back-button {
+    display: none;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* -----------------------
+   MOBILE (override) styles
+   ----------------------- */
+@media (max-width: 768px) {
+
+/* make page height flexible on mobile */
+    body {
+        height: auto;
+        padding: 10px;
+    }
+
+    /* stack the chat container and allow full width */
+    .chat-container {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        min-width: unset;
+        min-height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    /* users list becomes block that fills viewport height */
+    .users-list {
+        width: 100%;
+        min-height: calc(100vh - 70px);
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+        border-radius: 0;
+        padding: 12px;
+        flex: none;
+        overflow-y: auto;
+    }
+
+    /* chat area hidden by default; will be shown on user selection */
+    .chat-area {
+        width: 100%;
+        min-height: calc(100vh - 70px);
+        padding: 12px;
+        border-radius: 0;
+        display: none;
+        position: relative;
+        flex-direction: column;
+    }
+
+    /* class toggled by the small UI script */
+    .chat-area.mobile-active {
+        display: flex;
+    }
+
+    /* chat messages should take remaining space */
+    #chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        max-height: none;
+        margin-bottom: 60px; /* avoid overlap with fixed input */
+    }
+
+    /* make message input fixed to bottom for easy typing */
+    .message-input {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+        gap: 8px;
+    }
+
+    .message-input input {
+        border-radius: 24px;
+        padding: 12px 16px;
+    }
+
+    .message-input button {
+        border-radius: 24px;
+        padding: 10px 14px;
+    }
+
+    .back-button {
+        display: inline-block;
+    }
+
+    /* ensure .hidden can be overridden for mobile toggles */
+    .hidden {
+        display: none !important;
+    }
+
+    /* smaller fonts and tighter spacing for mobile */
+    .user-item img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .user-item span {
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .message p {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .user-item span.nbr-msg {
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Prevent mobile browsers from zooming in on input focus */
+.message-input input,
+.message-input button {
+    font-size: 16px !important;
+}
+
+/* Optional but recommended: prevent iOS from resizing text */
+html {
+    -webkit-text-size-adjust: 100%;
+}

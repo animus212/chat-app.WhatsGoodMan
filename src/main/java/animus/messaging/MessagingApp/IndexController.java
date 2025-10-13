@@ -1,14 +1,6 @@
 package animus.messaging.MessagingApp;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
 
 @Controller
 public class IndexController {
@@ -32,25 +24,25 @@ public class IndexController {
 //        return "index";
 //    }
 
-    @GetMapping("/")
-    public String getUsernamePage() {
-        return "username"; // Loads username.html
-    }
+//    @GetMapping("/")
+//    public String getUsernamePage() {
+//        return "index"; // Loads username.html
+//    }
 
-    @GetMapping("/chat")
-    public String chatPage(HttpSession session, Model model) {
-        String username = (String) session.getAttribute("username");
-        if (username == null || username.isBlank()) {
-            return "redirect:/";
-        }
-        model.addAttribute("username", username);
-        return "index"; // Loads index.html (your chat page)
-    }
+//    @GetMapping("/chat")
+//    public String chatPage(HttpSession session, Model model) {
+//        String username = (String) session.getAttribute("username");
+//        if (username == null || username.isBlank()) {
+//            return "redirect:/";
+//        }
+//        model.addAttribute("username", username);
+//        return "index"; // Loads index.html (your chat page)
+//    }
 
-    @PostMapping("/set-username")
-    @ResponseBody
-    public void setUsername(@RequestBody Map<String, String> payload, HttpSession session) {
-        session.setAttribute("username", payload.get("username"));
-    }
+//    @PostMapping("/set-username")
+//    @ResponseBody
+//    public void setUsername(@RequestBody Map<String, String> payload, HttpSession session) {
+//        session.setAttribute("username", payload.get("username"));
+//    }
 
 }

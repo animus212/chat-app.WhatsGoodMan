@@ -18,15 +18,15 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    @MessageMapping("/chat.addUser")
-    @SendTo("/user/public")
+    @MessageMapping("/user.addUser")
+    @SendTo("/topic/public")
     public User addUser(@Payload User user){
         userService.addUser(user);
         return user;
     }
 
-    @MessageMapping("/chat.disconnectUser")
-    @SendTo("/user/public")
+    @MessageMapping("/user.disconnectUser")
+    @SendTo("/topic/public")
     public User disconnectUser(@Payload User user){
         userService.disconnectUser(user);
         return user;
